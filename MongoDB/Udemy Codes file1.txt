@@ -1,0 +1,3433 @@
+Enterprise localhost> use travel_differentVehicles;
+switched to db travel_differentVehicles
+Enterprise travel_differentVehicles> db.travel_differentVehicles.find();
+
+Enterprise travel_differentVehicles> db.travel_differentVehicles.flightData.find();
+
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea50e87c1c1e6df55d21e3"),
+    name: 'Indigo',
+    location: 'Indigo Airlines,Delhi'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay'
+  }
+]
+Enterprise travel_differentVehicles> db.BusData.find();
+[
+  {
+    _id: ObjectId("61ea516e7c1c1e6df55d21e5"),
+    name: 'Orange Tours and Travels',
+    location: 'Orange Bus , Bangalore'
+  },
+  {
+    _id: ObjectId("61ea58bf7c1c1e6df55d21e6"),
+    name: 'SRS Travels',
+    location: 'SRS Travels , Delhi'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea50e87c1c1e6df55d21e3"),
+    name: 'Indigo',
+    location: 'Indigo Airlines,Delhi'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay'
+  }
+]
+Enterprise travel_differentVehicles> db.FLIGHTDATA.FIND();
+TypeError: db.FLIGHTDATA.FIND is not a function
+Enterprise travel_differentVehicles> db.FLIGHTDATA.find();
+
+Enterprise travel_differentVehicles> db.flightData.fIND();
+TypeError: db.flightData.fIND is not a function
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea50e87c1c1e6df55d21e3"),
+    name: 'Indigo',
+    location: 'Indigo Airlines,Delhi'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.deleteOne({name : "Indigo"});
+{ acknowledged: true, deletedCount: 1 }
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData().find();
+TypeError: db.flightData is not a function
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay'
+  }
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"},{name_changed : "Vistara updated name"});
+MongoInvalidArgumentError: Update document requires atomic operators
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"},{$set : {name_changed : "Vistara updated name"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ea51007c1c1e6df55d21e4"),
+    name: 'Vistara',
+    location: 'VistaraAirlines,Bombay',
+    name_changed: 'Vistara updated name'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.deleteOne({name : "Vistara"});
+{ acknowledged: true, deletedCount: 1 }
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"});
+MongoInvalidArgumentError: Update document requires atomic operators
+Enterprise travel_differentVehicles> db.flightData.insertOne({name : "Vistara"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ee7cb3d56807bf8a7136e5")
+}
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"}, $set : {{location : "Added this property via update function"}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:49)
+
+> 1 | db.flightData.updateOne({name : "Vistara"}, $set : {{location : "Added this property via update function"}});
+    |                                                  ^
+  2 |
+
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"}, $set: {{location : "Added this property via update function"}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:48)
+
+> 1 | db.flightData.updateOne({name : "Vistara"}, $set: {{location : "Added this property via update function"}});
+    |                                                 ^
+  2 |
+
+Enterprise travel_differentVehicles> db.flightData.updateOne({name : "Vistara"}, {$set: {location : "Added this property via update function"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore'
+  },
+  {
+    _id: ObjectId("61ee7cb3d56807bf8a7136e5"),
+    name: 'Vistara',
+    location: 'Added this property via update function'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.updateMany({}, $set : {{Marker : "New changes suggested via updateMany function"}});
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.flightData.updateMany({}, $set : {{Marker : "New changes suggested via updateMany function"}});
+    |                                   ^
+  2 |
+
+Enterprise travel_differentVehicles> db.flightData.updateMany({},{ $set : {Marker : "New changes suggested via updateMany function"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ea50b77c1c1e6df55d21e2"),
+    name: 'Kingfisher',
+    location: 'Indian Airlines,Bangalore',
+    Marker: 'New changes suggested via updateMany function'
+  },
+  {
+    _id: ObjectId("61ee7cb3d56807bf8a7136e5"),
+    name: 'Vistara',
+    location: 'Added this property via update function',
+    Marker: 'New changes suggested via updateMany function'
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.deleteMany({Marker : "New changes suggested via updateMany function"});
+{ acknowledged: true, deletedCount: 2 }
+Enterprise travel_differentVehicles> db.flightData.find();
+
+Enterprise travel_differentVehicles> db.flightData.insertMany({{"_id":{"$oid":"61ee7f383a0c298a0c56d340"},"dapartureAirport":"MUC","arrival Airport":"SFO","Aircraft":"Airbus A380","distance":450,"Intercontinental":true}{"_id":{"$oid":"61ee7f383a0c298a0c56d340"},"dapartureAirport":"MUC","arrival Airport":"SFO","Aircraft":"Airbus A380","distance":450,"Intercontinental":tru});
+Enterprise travel_differentVehicles> db.flightData.find({name : "Vistara"});
+
+Enterprise travel_differentVehicles> db.flightData.find({intercontinental : true});
+
+Enterprise travel_differentVehicles> db.flightData.find({Intercontinental : true});
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    dapartureAirport: 'MUC',
+    'arrival Airport': 'SFO',
+    Aircraft: 'Airbus A380',
+    distance: 450,
+    Intercontinental: true
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: true
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.find({distance : {$gt : 1000}});
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: true
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.findOne({distance :  1000});
+null
+Enterprise travel_differentVehicles> db.flightData.findOne({Intercontinental : true});
+{
+  _id: ObjectId("61ee7f383a0c298a0c56d340"),
+  dapartureAirport: 'MUC',
+  'arrival Airport': 'SFO',
+  Aircraft: 'Airbus A380',
+  distance: 450,
+  Intercontinental: true
+}
+Enterprise travel_differentVehicles> db.flightData.updateMany({Intercontinental : false});
+MongoInvalidArgumentError: Update document requires atomic operators
+Enterprise travel_differentVehicles> db.flightData.updateMany({Intercontinental : true},{$set : {Intercontinental : false}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    dapartureAirport: 'MUC',
+    'arrival Airport': 'SFO',
+    Aircraft: 'Airbus A380',
+    distance: 450,
+    Intercontinental: false
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.update({Intercontinental : true},{$set : {Intercontinental : false}});
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    dapartureAirport: 'MUC',
+    'arrival Airport': 'SFO',
+    Aircraft: 'Airbus A380',
+    distance: 450,
+    Intercontinental: false
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.update({Intercontinental : true});
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 1 (Collection.update)
+Enterprise travel_differentVehicles> db.flightData.update({distance : 450},{Intercontinental : true});
+MongoInvalidArgumentError: Update document requires atomic operators
+Enterprise travel_differentVehicles> db.flightData.replaceOne({distance : 450},{Intercontinental : "Replace One function"});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function'
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  }
+]
+Enterprise travel_differentVehicles> db.flightData
+db.flightData
+
+Enterprise travel_differentVehicles> db.f
+db.fsyncLock    db.fsyncUnlock  db.flightData
+
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function'
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35
+  }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find().toArray();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function'
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d355"),
+    name: 'Klaus Arber',
+    age: 53
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d356"),
+    name: 'Albert Twostone',
+    age: 68
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d357"),
+    name: 'Gordon Black',
+    age: 38
+  }
+]
+Enterprise travel_differentVehicles> db.flightData.find().forEach({$set : {Location : "Added this property via for each loop"}});
+TypeError: f is not a function
+Enterprise travel_differentVehicles> db.flightData.find().forEach(updateMany({$set : {Location : "Added this property via for each loop"}}));
+ReferenceError: updateMany is not defined
+Enterprise travel_differentVehicles> db.flightData.find().forEach(updateMany({$set : {Location : "Added this property via for each loop"}}));
+Enterprise travel_differentVehicles> db.flightData.find().forEach(function(a) {printjson(a)});
+{
+  _id: ObjectId("61ee7f383a0c298a0c56d340"),
+  Intercontinental: 'Replace One function'
+}
+{
+  _id: ObjectId("61ee7f383a0c298a0c56d341"),
+  dapartureAirport: 'LHR',
+  'arrival Airport': 'TXL',
+  Aircraft: 'Airbus A378',
+  distance: 4500,
+  Intercontinental: false
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d343"),
+  name: 'Max Schwarzmueller',
+  age: 29
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d344"),
+  name: 'Manu Lorenz',
+  age: 30
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d345"),
+  name: 'Chris Hayton',
+  age: 35
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d346"),
+  name: 'Sandeep Kumar',
+  age: 28
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d347"),
+  name: 'Maria Jones',
+  age: 30
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d348"),
+  name: 'Alexandra Maier',
+  age: 27
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d349"),
+  name: 'Dr. Phil Evans',
+  age: 47
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34a"),
+  name: 'Sandra Brugge',
+  age: 33
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34b"),
+  name: 'Elisabeth Mayr',
+  age: 29
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34c"),
+  name: 'Frank Cube',
+  age: 41
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34d"),
+  name: 'Karandeep Alun',
+  age: 48
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34e"),
+  name: 'Michaela Drayer',
+  age: 39
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d34f"),
+  name: 'Bernd Hoftstadt',
+  age: 22
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d350"),
+  name: 'Scott Tolib',
+  age: 44
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d351"),
+  name: 'Freddy Melver',
+  age: 41
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d352"),
+  name: 'Alexis Bohed',
+  age: 35
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d353"),
+  name: 'Melanie Palace',
+  age: 27
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d354"),
+  name: 'Armin Glutch',
+  age: 35
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d355"),
+  name: 'Klaus Arber',
+  age: 53
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d356"),
+  name: 'Albert Twostone',
+  age: 68
+}
+{
+  _id: ObjectId("61eebc123a0c298a0c56d357"),
+  name: 'Gordon Black',
+  age: 38
+}
+
+Enterprise travel_differentVehicles> db.flightData.findOne();
+{
+  _id: ObjectId("61ee7f383a0c298a0c56d340"),
+  Intercontinental: 'Replace One function'
+}
+Enterprise travel_differentVehicles> db.flightData.findOne();
+{
+  _id: ObjectId("61ee7f383a0c298a0c56d340"),
+  Intercontinental: 'Replace One function'
+}
+Enterprise travel_differentVehicles> db.flightData.findOne().pretty();
+TypeError: db.flightData.findOne().pretty is not a function
+Enterprise travel_differentVehicles> db.flightData.findOne().pretty();
+TypeError: db.flightData.findOne().pretty is not a function
+Enterprise travel_differentVehicles> db.flightData.find().pretty();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function'
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35
+  }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find({},{name : 1}).pretty();
+[
+  { _id: ObjectId("61ee7f383a0c298a0c56d340") },
+  { _id: ObjectId("61ee7f383a0c298a0c56d341") },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d344"), name: 'Manu Lorenz' },
+  { _id: ObjectId("61eebc123a0c298a0c56d345"), name: 'Chris Hayton' },
+  { _id: ObjectId("61eebc123a0c298a0c56d346"), name: 'Sandeep Kumar' },
+  { _id: ObjectId("61eebc123a0c298a0c56d347"), name: 'Maria Jones' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d349"), name: 'Dr. Phil Evans' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34a"), name: 'Sandra Brugge' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34b"), name: 'Elisabeth Mayr' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34c"), name: 'Frank Cube' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34d"), name: 'Karandeep Alun' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer'
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d350"), name: 'Scott Tolib' },
+  { _id: ObjectId("61eebc123a0c298a0c56d351"), name: 'Freddy Melver' },
+  { _id: ObjectId("61eebc123a0c298a0c56d352"), name: 'Alexis Bohed' },
+  { _id: ObjectId("61eebc123a0c298a0c56d353"), name: 'Melanie Palace' },
+  { _id: ObjectId("61eebc123a0c298a0c56d354"), name: 'Armin Glutch' }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find({},{name : 1},{id : 0}).pretty();
+[
+  { _id: ObjectId("61ee7f383a0c298a0c56d340") },
+  { _id: ObjectId("61ee7f383a0c298a0c56d341") },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d344"), name: 'Manu Lorenz' },
+  { _id: ObjectId("61eebc123a0c298a0c56d345"), name: 'Chris Hayton' },
+  { _id: ObjectId("61eebc123a0c298a0c56d346"), name: 'Sandeep Kumar' },
+  { _id: ObjectId("61eebc123a0c298a0c56d347"), name: 'Maria Jones' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d349"), name: 'Dr. Phil Evans' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34a"), name: 'Sandra Brugge' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34b"), name: 'Elisabeth Mayr' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34c"), name: 'Frank Cube' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34d"), name: 'Karandeep Alun' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer'
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d350"), name: 'Scott Tolib' },
+  { _id: ObjectId("61eebc123a0c298a0c56d351"), name: 'Freddy Melver' },
+  { _id: ObjectId("61eebc123a0c298a0c56d352"), name: 'Alexis Bohed' },
+  { _id: ObjectId("61eebc123a0c298a0c56d353"), name: 'Melanie Palace' },
+  { _id: ObjectId("61eebc123a0c298a0c56d354"), name: 'Armin Glutch' }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find({},{name : 1},{_id : 0}).pretty();
+[
+  { _id: ObjectId("61ee7f383a0c298a0c56d340") },
+  { _id: ObjectId("61ee7f383a0c298a0c56d341") },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d344"), name: 'Manu Lorenz' },
+  { _id: ObjectId("61eebc123a0c298a0c56d345"), name: 'Chris Hayton' },
+  { _id: ObjectId("61eebc123a0c298a0c56d346"), name: 'Sandeep Kumar' },
+  { _id: ObjectId("61eebc123a0c298a0c56d347"), name: 'Maria Jones' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d349"), name: 'Dr. Phil Evans' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34a"), name: 'Sandra Brugge' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34b"), name: 'Elisabeth Mayr' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34c"), name: 'Frank Cube' },
+  { _id: ObjectId("61eebc123a0c298a0c56d34d"), name: 'Karandeep Alun' },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer'
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt'
+  },
+  { _id: ObjectId("61eebc123a0c298a0c56d350"), name: 'Scott Tolib' },
+  { _id: ObjectId("61eebc123a0c298a0c56d351"), name: 'Freddy Melver' },
+  { _id: ObjectId("61eebc123a0c298a0c56d352"), name: 'Alexis Bohed' },
+  { _id: ObjectId("61eebc123a0c298a0c56d353"), name: 'Melanie Palace' },
+  { _id: ObjectId("61eebc123a0c298a0c56d354"), name: 'Armin Glutch' }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find({},{name : 1,_id : 0}).pretty();
+[
+  {},
+  {},
+  { name: 'Max Schwarzmueller' },
+  { name: 'Manu Lorenz' },
+  { name: 'Chris Hayton' },
+  { name: 'Sandeep Kumar' },
+  { name: 'Maria Jones' },
+  { name: 'Alexandra Maier' },
+  { name: 'Dr. Phil Evans' },
+  { name: 'Sandra Brugge' },
+  { name: 'Elisabeth Mayr' },
+  { name: 'Frank Cube' },
+  { name: 'Karandeep Alun' },
+  { name: 'Michaela Drayer' },
+  { name: 'Bernd Hoftstadt' },
+  { name: 'Scott Tolib' },
+  { name: 'Freddy Melver' },
+  { name: 'Alexis Bohed' },
+  { name: 'Melanie Palace' },
+  { name: 'Armin Glutch' }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.find({},{age : 1,name : 1,_id : 0}).pretty();
+[
+  {},
+  {},
+  { name: 'Max Schwarzmueller', age: 29 },
+  { name: 'Manu Lorenz', age: 30 },
+  { name: 'Chris Hayton', age: 35 },
+  { name: 'Sandeep Kumar', age: 28 },
+  { name: 'Maria Jones', age: 30 },
+  { name: 'Alexandra Maier', age: 27 },
+  { name: 'Dr. Phil Evans', age: 47 },
+  { name: 'Sandra Brugge', age: 33 },
+  { name: 'Elisabeth Mayr', age: 29 },
+  { name: 'Frank Cube', age: 41 },
+  { name: 'Karandeep Alun', age: 48 },
+  { name: 'Michaela Drayer', age: 39 },
+  { name: 'Bernd Hoftstadt', age: 22 },
+  { name: 'Scott Tolib', age: 44 },
+  { name: 'Freddy Melver', age: 41 },
+  { name: 'Alexis Bohed', age: 35 },
+  { name: 'Melanie Palace', age: 27 },
+  { name: 'Armin Glutch', age: 35 }
+]
+
+
+
+
+
+Embedded Documents :- 
+Enterprise localhost> use travel_differentVehicles;
+switched to db travel_differentVehicles
+Enterprise travel_differentVehicles>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+Enterprise travel_differentVehicles> db.flightData.find().updateMany({},{$set : {status : {description : "on time", flightTime : {currentFlightStatus : "Running"}}}});
+TypeError: db.flightData.find().updateMany is not a function
+Enterprise travel_differentVehicles> db.flightData.updateMany({},{$set : {status : {description : "on time", flightTime : {currentFlightStatus : "Running"}}}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 23,
+  modifiedCount: 23,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function',
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: { currentFlightStatus: 'Running' }
+    }
+  }
+]
+Type "it" for more
+Enterprise travel_differentVehicles> db.flightData.updateMany({},{$set : {status : {description : "on time", flightTime : {currentFlightStatus : "Running",flightLocation : {Current_Location : "Hyderabad to Bangalore"}}}}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 23,
+  modifiedCount: 23,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find();
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function',
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  }
+]
+
+
+
+
+
+
+Working with Arrays :- 
+Enterprise travel_differentVehicles> db.flightData.updateMany({name : "Maria Jones"},{$set : {Hobbies : ["Cooking","Cleaning",23]}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise travel_differentVehicles> db.flightData.find({name : "Maria Jones"});
+[
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    },
+    Hobbies: [ 'Cooking', 'Cleaning', 23 ]
+  }
+]
+
+
+
+
+
+
+Enterprise travel_differentVehicles> db.flightData.find({"status.description" : "on time"});
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function',
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    },
+    Hobbies: [ 'Cooking', 'Cleaning', 23 ]
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  }
+]
+
+
+
+
+
+
+
+
+
+db.flightData.find({"status.flightTime.flightLocation" :{Current_Location : "Hyderabad to Bangalore"} });
+[
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d340"),
+    Intercontinental: 'Replace One function',
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61ee7f383a0c298a0c56d341"),
+    dapartureAirport: 'LHR',
+    'arrival Airport': 'TXL',
+    Aircraft: 'Airbus A378',
+    distance: 4500,
+    Intercontinental: false,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d343"),
+    name: 'Max Schwarzmueller',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d344"),
+    name: 'Manu Lorenz',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d345"),
+    name: 'Chris Hayton',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d346"),
+    name: 'Sandeep Kumar',
+    age: 28,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d347"),
+    name: 'Maria Jones',
+    age: 30,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    },
+    Hobbies: [ 'Cooking', 'Cleaning', 23 ]
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d348"),
+    name: 'Alexandra Maier',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d349"),
+    name: 'Dr. Phil Evans',
+    age: 47,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34a"),
+    name: 'Sandra Brugge',
+    age: 33,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34b"),
+    name: 'Elisabeth Mayr',
+    age: 29,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34c"),
+    name: 'Frank Cube',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34d"),
+    name: 'Karandeep Alun',
+    age: 48,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34e"),
+    name: 'Michaela Drayer',
+    age: 39,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d34f"),
+    name: 'Bernd Hoftstadt',
+    age: 22,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d350"),
+    name: 'Scott Tolib',
+    age: 44,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d351"),
+    name: 'Freddy Melver',
+    age: 41,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d352"),
+    name: 'Alexis Bohed',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d353"),
+    name: 'Melanie Palace',
+    age: 27,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  },
+  {
+    _id: ObjectId("61eebc123a0c298a0c56d354"),
+    name: 'Armin Glutch',
+    age: 35,
+    status: {
+      description: 'on time',
+      flightTime: {
+        currentFlightStatus: 'Running',
+        flightLocation: { Current_Location: 'Hyderabad to Bangalore' }
+      }
+    }
+  }
+]
+
+
+
+
+
+
+
+
+
+
+
+Timestamp and Date functions :- 
+
+
+Enterprise shop> db.structure_documents.insertOne({name : "Book 10",price : 32.34, Currency : "Rupee1",details : null,insertedAt : new Timestamp(),foundingDate : new ISODate()});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef7950e8f58e348293a0b0")
+}
+Enterprise shop> db.structure_documents.find();
+[
+  {
+    _id: ObjectId("61eefa0be8f58e348293a0a9"),
+    name: 'Book2',
+    price: 12
+  },
+  {
+    _id: ObjectId("61eefa13e8f58e348293a0aa"),
+    name: 'Book 2',
+    price: 22
+  },
+  {
+    _id: ObjectId("61eefa3ce8f58e348293a0ab"),
+    name: 'Book 2',
+    price: 32,
+    Currency: 'Rupee'
+  },
+  {
+    _id: ObjectId("61eefa77e8f58e348293a0ac"),
+    name: 'Book 3',
+    price: 32,
+    Currency: 'Rupee',
+    details: { Description: 'Poetry', Subject: 'Biology' }
+  },
+  {
+    _id: ObjectId("61eefa9be8f58e348293a0ad"),
+    name: 'Book 3',
+    price: 32.34,
+    Currency: 'Rupee',
+    details: { Description: 'Poetry', Subject: 'Biology' }
+  },
+  {
+    _id: ObjectId("61eefaf7e8f58e348293a0ae"),
+    name: 'Book 10',
+    price: 32.34,
+    Currency: 'Rupee1',
+    details: null
+  },
+  {
+    _id: ObjectId("61ef792ae8f58e348293a0af"),
+    name: 'Book 10',
+    price: 32.34,
+    Currency: 'Rupee1',
+    details: null,
+    insertedAt: Timestamp({ t: 1643084074, i: 1 })
+  },
+  {
+    _id: ObjectId("61ef7950e8f58e348293a0b0"),
+    name: 'Book 10',
+    price: 32.34,
+    Currency: 'Rupee1',
+    details: null,
+    insertedAt: Timestamp({ t: 1643084112, i: 1 }),
+    foundingDate: ISODate("2022-01-25T04:15:12.614Z")
+  }
+]
+
+
+
+
+
+
+
+
+One to One relations :-
+
+Enterprise shop> use hospital;
+switched to db hospital
+Enterprise hospital> db.patients.insertOne({name : "Name1", Summary : "Summary1"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef85a6e8f58e348293a0b3")
+}
+Enterprise hospital> db.patients.insertOne({name : "Name2", Summary : "Summary2"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef85ade8f58e348293a0b4")
+}
+Enterprise hospital> db.patients.insertOne({name : "Name3", Summary : "Summary3"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef85b4e8f58e348293a0b5")
+}
+Enterprise hospital> db.patients.insertOne({name : "Name4", Summary : "Summary4"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef85bbe8f58e348293a0b6")
+}
+Enterprise hospital> db.patients.insertOne({name : "Name5", Summary : "Summary5"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61ef85c2e8f58e348293a0b7")
+}
+Enterprise hospital> db.patients.find();
+[
+  {
+    _id: ObjectId("61ef85a6e8f58e348293a0b3"),
+    name: 'Name1',
+    Summary: 'Summary1'
+  },
+  {
+    _id: ObjectId("61ef85ade8f58e348293a0b4"),
+    name: 'Name2',
+    Summary: 'Summary2'
+  },
+  {
+    _id: ObjectId("61ef85b4e8f58e348293a0b5"),
+    name: 'Name3',
+    Summary: 'Summary3'
+  },
+  {
+    _id: ObjectId("61ef85bbe8f58e348293a0b6"),
+    name: 'Name4',
+    Summary: 'Summary4'
+  },
+  {
+    _id: ObjectId("61ef85c2e8f58e348293a0b7"),
+    name: 'Name5',
+    Summary: 'Summary5'
+  }
+]
+Enterprise hospital> db.patients.find({name : "Name5"});
+[
+  {
+    _id: ObjectId("61ef85c2e8f58e348293a0b7"),
+    name: 'Name5',
+    Summary: 'Summary5'
+  }
+]
+
+
+
+Enterprise hospital> db.patients.findOne().Summary;
+Summary1
+Enterprise hospital> var s = db.patients.findOne().Summary;
+
+Enterprise hospital> s
+Summary1
+
+
+
+
+
+
+
+$and and $elemMatch
+
+Enterprise Imported_Document_Udemy> db.TvShows.find({$and :[{"externals.tvrage" : 28398},{"externals.imdb" : "tt1837576"}]}).count();
+1
+Enterprise Imported_Document_Udemy> db.TvShows.find({},{$and :[{"externals.tvrage" : 28398},{"externals.imdb" : "tt1837576"}]}).count();
+240
+Enterprise Imported_Document_Udemy> db.TvShows.find({},{$elemMatch :[{"network.country.name" : "United States"},{"network.country.code" : "US"}]}).count();
+240
+Enterprise Imported_Document_Udemy> db.TvShows.find({},{network : {$elemMatch :[{"network.country.name" : "United States"},{"network.country.code" : "US"}]}}).count();
+240
+Enterprise Imported_Document_Udemy> db.TvShows.find({},{network : {$elemMatch :{"network.country.name" : "United States","network.country.code" : "US"}}}).count();
+240
+Enterprise Imported_Document_Udemy> db.TvShows.find({},{network : {$elemMatch :{"network.name" : "FOX","network.country.code" : "US"}}}).count();
+240
+
+
+
+
+
+
+
+
+finding a value and incrementing 
+Enterprise Employees> db.company_employees1.updateMany({"Hobbies.title" : {$type :  "string"}},{$inc : {"Hobbies.$.addingFrequency" : 20}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find();
+[
+  {
+    _id: ObjectId("61f2390f11f84af4345af560"),
+    name: 'Google',
+    age: 23,
+    Hobbies: [
+      'changed to developed updateOne function company',
+      { description: 'started 15 years ago ' }
+    ]
+  },
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      {
+        title: 'Electronics Company',
+        frequency: true,
+        addingFrequency: 40
+      },
+      { description: 'started 35 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2393c11f84af4345af562"),
+    name: 'Microsoft',
+    age: 37,
+    Hobbies: [
+      { title: 'Electrical Company', addingFrequency: 40 },
+      { description: 'started 45 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      { title: 'Mechanical Company', addingFrequency: 40 },
+      { description: 'started 65 years ago ' }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+
+
+
+
+
+
+Checking for new condition and adding new filed in the array :-
+Enterprise Employees> db.company_employees1.updateOne({"Hobbies.title" : "Electronics Company"},{$set : {"Hobbies.$.frequency" : true}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise Employees> db.company_employees1.find({});
+[
+  {
+    _id: ObjectId("61f2390f11f84af4345af560"),
+    name: 'Google',
+    age: 23,
+    Hobbies: [
+      'changed to developed updateOne function company',
+      { description: 'started 15 years ago ' }
+    ]
+  },
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      { title: 'Electronics Company', frequency: true },
+      { description: 'started 35 years ago ' }
+    ]
+  },
+
+
+checking for condtion and adding new field :-
+Enterprise Employees>  db.company_employees1.updateMany({age : {$gt : 25}},{$set : {goodFrequency : 2}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find({age : {$gt : 25}});
+[
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      { title: 'Electronics Company', frequency: true },
+      { description: 'started 35 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2393c11f84af4345af562"),
+    name: 'Microsoft',
+    age: 37,
+    Hobbies: [
+      { title: 'Electrical Company' },
+      { description: 'started 45 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      { title: 'Mechanical Company' },
+      { description: 'started 65 years ago ' }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+finding a field using type and adding a field :-
+
+Enterprise Employees> db.company_employees1.updateMany({"Hobbies.title" : {$type :  "string"}},{$set : {"Hobbies.$.addingFrequency" : 20}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find();
+[
+  {
+    _id: ObjectId("61f2390f11f84af4345af560"),
+    name: 'Google',
+    age: 23,
+    Hobbies: [
+      'changed to developed updateOne function company',
+      { description: 'started 15 years ago ' }
+    ]
+  },
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      {
+        title: 'Electronics Company',
+        frequency: true,
+        addingFrequency: 20
+      },
+      { description: 'started 35 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2393c11f84af4345af562"),
+    name: 'Microsoft',
+    age: 37,
+    Hobbies: [
+      { title: 'Electrical Company', addingFrequency: 20 },
+      { description: 'started 45 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      { title: 'Mechanical Company', addingFrequency: 20 },
+      { description: 'started 65 years ago ' }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+
+
+
+
+adding a new document inside an array 
+
+Enterprise Employees> db.company_employees1.updateMany({"Hobbies.title" : {$type :  "string"}},{$set : {"Hobbies.$.[].titleChanged" :  true}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find();
+[
+  {
+    _id: ObjectId("61f2390f11f84af4345af560"),
+    name: 'Google',
+    age: 23,
+    Hobbies: [
+      'changed to developed updateOne function company',
+      { description: 'started 15 years ago ' }
+    ]
+  },
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      {
+        title: 'Electronics Company',
+        frequency: true,
+        addingFrequency: 40,
+        '[]': { titleChanged: true }
+      },
+      { description: 'started 35 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2393c11f84af4345af562"),
+    name: 'Microsoft',
+    age: 37,
+    Hobbies: [
+      {
+        title: 'Electrical Company',
+        addingFrequency: 40,
+        '[]': { titleChanged: true }
+      },
+      { description: 'started 45 years ago ' }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      {
+        title: 'Mechanical Company',
+        addingFrequency: 40,
+        '[]': { titleChanged: true }
+      },
+      { description: 'started 65 years ago ' }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+
+
+
+
+
+
+
+Enterprise Employees>  db.company_employees1.updateMany({},{$push : {Hobbies : {title_push : "Pushed title via push function",role_push : 23}}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 4,
+  modifiedCount: 4,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find();
+[
+  {
+    _id: ObjectId("61f2390f11f84af4345af560"),
+    name: 'Google',
+    age: 23,
+    Hobbies: [
+      'changed to developed updateOne function company',
+      { description: 'started 15 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 }
+    ]
+  },
+  {
+    _id: ObjectId("61f2392911f84af4345af561"),
+    name: 'Facebook',
+    age: 27,
+    Hobbies: [
+      {
+        title: 'Electronics Company',
+        frequency: true,
+        addingFrequency: 40,
+        '[]': true,
+        addingRole: 'Development Role'
+      },
+      { description: 'started 35 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2393c11f84af4345af562"),
+    name: 'Microsoft',
+    age: 37,
+    Hobbies: [
+      {
+        title: 'Electrical Company',
+        addingFrequency: 40,
+        '[]': true,
+        addingRole: 'Development Role'
+      },
+      { description: 'started 45 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 }
+    ],
+    goodFrequency: 2
+  },
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      {
+        title: 'Mechanical Company',
+        addingFrequency: 40,
+        '[]': true,
+        addingRole: 'Development Role'
+      },
+      { description: 'started 65 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+
+
+
+
+
+
+Pop from first and last :- if last use +1 and first then use -1
+
+Enterprise Employees>  db.company_employees1.find({name : "Bosch"});
+[
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      {
+        title: 'Mechanical Company',
+        addingFrequency: 40,
+        '[]': true,
+        addingRole: 'Development Role'
+      },
+      { description: 'started 65 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 },
+      { title_push2: 'Pushed title via push function', role_push2: 23 },
+      { title_push3: 'Pushed title3', role_push3: 25 },
+      { title_push4: 'Pushed title4', role_push4: 45 }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+Popping from first :-
+
+Enterprise Employees>  db.company_employees1.updateOne({name : "Bosch"},{$pop : {Hobbies : 1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find({name : "Bosch"});
+[
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      {
+        title: 'Mechanical Company',
+        addingFrequency: 40,
+        '[]': true,
+        addingRole: 'Development Role'
+      },
+      { description: 'started 65 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 },
+      { title_push2: 'Pushed title via push function', role_push2: 23 },
+      { title_push3: 'Pushed title3', role_push3: 25 }
+    ],
+    goodFrequency: 2
+  }
+]
+
+Popping from last :-
+
+Enterprise Employees>  db.company_employees1.updateOne({name : "Bosch"},{$pop : {Hobbies : -1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.find({name : "Bosch"});
+[
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      { description: 'started 65 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 },
+      { title_push2: 'Pushed title via push function', role_push2: 23 },
+      { title_push3: 'Pushed title3', role_push3: 25 }
+    ],
+    goodFrequency: 2
+  }
+]
+
+
+
+
+
+
+--> adding 2 documents separately 
+Enterprise Employees>  db.company_employees1.updateOne({name : "Bosch"},{$addToSet : {Hobbies :{title : "Mechanical College", age : 35}}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Enterprise Employees>  db.company_employees1.updateOne({name : "Bosch"},{$addToSet : {Hobbies :{title : "Mechanical College", age : 35}}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Output :- Enterprise Employees>  db.company_employees1.find({name : "Bosch"});
+[
+  {
+    _id: ObjectId("61f2395211f84af4345af563"),
+    name: 'Bosch',
+    age: 47,
+    Hobbies: [
+      { description: 'started 65 years ago ' },
+      { title_push: 'Pushed title via push function', role_push: 23 },
+      { title_push2: 'Pushed title via push function', role_push2: 23 },
+      { title_push3: 'Pushed title3', role_push3: 25 },
+      [ { addingRole: 'Testing Role', addingProject: 'ServiceNow' } ],
+      { title: 'Mechanical College', age: 35 }
+    ],
+    goodFrequency: 2
+  }
+]
+ 
+
+
+
+
+Setting up compound indexes 
+{dob.age and gender}
+
+This will work in find query if both are used or only dob.age is used (it is on left side)
+winning Plan :- iXSCAN 
+
+if gender is used in find query then , 
+Winning Plan :- CollSPAN 
+
+
+Enterprise Indexes> db.Persons.explain("executionStats").find({"dob.age" : 45 , gender : "male"});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.Persons',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { 'dob.age': { '$eq': 45 } }, { gender: { '$eq': 'male' } } ]
+    },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { 'dob.age': 1, gender: 1 },
+        indexName: 'dob.age_1_gender_1',
+        isMultiKey: false,
+        multiKeyPaths: { 'dob.age': [], gender: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { 'dob.age': [ '[45, 45]' ], gender: [ '["male", "male"]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 36,
+    executionTimeMillis: 0,
+    totalKeysExamined: 36,
+    totalDocsExamined: 36,
+    executionStages: {
+      stage: 'FETCH',
+      nReturned: 36,
+      executionTimeMillisEstimate: 0,
+      works: 37,
+      advanced: 36,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 36,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 36,
+        executionTimeMillisEstimate: 0,
+        works: 37,
+        advanced: 36,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { 'dob.age': 1, gender: 1 },
+        indexName: 'dob.age_1_gender_1',
+        isMultiKey: false,
+        multiKeyPaths: { 'dob.age': [], gender: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { 'dob.age': [ '[45, 45]' ], gender: [ '["male", "male"]' ] },
+        keysExamined: 36,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  command: {
+    find: 'Persons',
+    filter: { 'dob.age': 45, gender: 'male' },
+    '$db': 'Indexes'
+  },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+Enterprise Indexes> db.Persons.explain("executionStats").find({"dob.age" : 45});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.Persons',
+    indexFilterSet: false,
+    parsedQuery: { 'dob.age': { '$eq': 45 } },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'FETCH',
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { 'dob.age': 1, gender: 1 },
+        indexName: 'dob.age_1_gender_1',
+        isMultiKey: false,
+        multiKeyPaths: { 'dob.age': [], gender: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { 'dob.age': [ '[45, 45]' ], gender: [ '[MinKey, MaxKey]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 90,
+    executionTimeMillis: 0,
+    totalKeysExamined: 90,
+    totalDocsExamined: 90,
+    executionStages: {
+      stage: 'FETCH',
+      nReturned: 90,
+      executionTimeMillisEstimate: 0,
+      works: 91,
+      advanced: 90,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 90,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 90,
+        executionTimeMillisEstimate: 0,
+        works: 91,
+        advanced: 90,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { 'dob.age': 1, gender: 1 },
+        indexName: 'dob.age_1_gender_1',
+        isMultiKey: false,
+        multiKeyPaths: { 'dob.age': [], gender: [] },
+        isUnique: false,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { 'dob.age': [ '[45, 45]' ], gender: [ '[MinKey, MaxKey]' ] },
+        keysExamined: 90,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  command: { find: 'Persons', filter: { 'dob.age': 45 }, '$db': 'Indexes' },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+Enterprise Indexes> db.Persons.explain("executionStats").find({gender : "male"});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.Persons',
+    indexFilterSet: false,
+    parsedQuery: { gender: { '$eq': 'male' } },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'COLLSCAN',
+      filter: { gender: { '$eq': 'male' } },
+      direction: 'forward'
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 2435,
+    executionTimeMillis: 6,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5000,
+    executionStages: {
+      stage: 'COLLSCAN',
+      filter: { gender: { '$eq': 'male' } },
+      nReturned: 2435,
+      executionTimeMillisEstimate: 0,
+      works: 5002,
+      advanced: 2435,
+      needTime: 2566,
+      needYield: 0,
+      saveState: 5,
+      restoreState: 5,
+      isEOF: 1,
+      direction: 'forward',
+      docsExamined: 5000
+    }
+  },
+  command: { find: 'Persons', filter: { gender: 'male' }, '$db': 'Indexes' },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1 
+
+
+
+
+
+
+
+Covered Indexes :- 
+Enterprise Indexes> db.sessions.insertOne({location : "Location1",Place : "place1", city : "City1"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3747811f84af4345af56b")
+}
+Enterprise Indexes> db.sessions.insertOne({location : "Location2",Place : "place2", city : "City2"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3748311f84af4345af56c")
+}
+Enterprise Indexes> db.sessions.insertOne({location : "Location3",Place : "place3", city : "City3"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3748c11f84af4345af56d")
+}
+Enterprise Indexes> db.sessions.insertOne({location : "Location4",Place : "place4", city : "City4"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3749411f84af4345af56e")
+}
+Enterprise Indexes> db.sessions.insertOne({location : "Location5",Place : "place5", city : "City5"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3749d11f84af4345af56f")
+}
+Enterprise Indexes> db.sessions.createIndex({location : 1,place : -1});
+location_1_place_-1
+
+
+
+
+
+
+Enterprise Indexes> db.sessions.explain("executionStats").find({location : 1 , _id : 0});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.sessions',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { _id: { '$eq': 0 } }, { location: { '$eq': 1 } } ]
+    },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'FETCH',
+      filter: { location: { '$eq': 1 } },
+      inputStage: {
+        stage: 'IXSCAN',
+        keyPattern: { _id: 1 },
+        indexName: '_id_',
+        isMultiKey: false,
+        multiKeyPaths: { _id: [] },
+        isUnique: true,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { _id: [ '[0, 0]' ] }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 0,
+    executionTimeMillis: 0,
+    totalKeysExamined: 0,
+    totalDocsExamined: 0,
+    executionStages: {
+      stage: 'FETCH',
+      filter: { location: { '$eq': 1 } },
+      nReturned: 0,
+      executionTimeMillisEstimate: 0,
+      works: 1,
+      advanced: 0,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      docsExamined: 0,
+      alreadyHasObj: 0,
+      inputStage: {
+        stage: 'IXSCAN',
+        nReturned: 0,
+        executionTimeMillisEstimate: 0,
+        works: 1,
+        advanced: 0,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        keyPattern: { _id: 1 },
+        indexName: '_id_',
+        isMultiKey: false,
+        multiKeyPaths: { _id: [] },
+        isUnique: true,
+        isSparse: false,
+        isPartial: false,
+        indexVersion: 2,
+        direction: 'forward',
+        indexBounds: { _id: [ '[0, 0]' ] },
+        keysExamined: 0,
+        seeks: 1,
+        dupsTested: 0,
+        dupsDropped: 0
+      }
+    }
+  },
+  command: {
+    find: 'sessions',
+    filter: { location: 1, _id: 0 },
+    '$db': 'Indexes'
+  },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+
+
+
+
+
+
+
+Note :-  if we use {} in find, it means that it has to go through all documents , at that time it will go for collscan and hence examinedDocuments won't be 0
+
+
+Enterprise Indexes> db.sessions.explain("executionStats").find({},{location : 1 , _id : 0});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.sessions',
+    indexFilterSet: false,
+    parsedQuery: {},
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'PROJECTION_SIMPLE',
+      transformBy: { location: 1, _id: 0 },
+      inputStage: { stage: 'COLLSCAN', direction: 'forward' }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 8,
+    executionTimeMillis: 0,
+    totalKeysExamined: 0,
+    totalDocsExamined: 8,
+    executionStages: {
+      stage: 'PROJECTION_SIMPLE',
+      nReturned: 8,
+      executionTimeMillisEstimate: 0,
+      works: 10,
+      advanced: 8,
+      needTime: 1,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      transformBy: { location: 1, _id: 0 },
+      inputStage: {
+        stage: 'COLLSCAN',
+        nReturned: 8,
+        executionTimeMillisEstimate: 0,
+        works: 10,
+        advanced: 8,
+        needTime: 1,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        direction: 'forward',
+        docsExamined: 8
+      }
+    }
+  },
+  command: {
+    find: 'sessions',
+    filter: {},
+    projection: { location: 1, _id: 0 },
+    '$db': 'Indexes'
+  },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+
+
+
+
+
+
+Note :- 
+In compound index , order does not matter as long as we have all fields included in the query that are mentioned in createIndex function 
+
+Enterprise Indexes> db.sessions2.insertOne({name : "Name1",Location : "location1",place : "place1"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f377ab11f84af4345af571")
+}
+Enterprise Indexes> db.sessions2.insertOne({name : "Name2",Location : "location2",place : "place2"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f377b511f84af4345af572")
+}
+Enterprise Indexes> db.sessions2.insertOne({name : "Name3",Location : "location3",place : "place3"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f377bf11f84af4345af573")
+}
+Enterprise Indexes> db.sessions2.insertOne({name : "Name4",Location : "location4",place : "place4"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f377c911f84af4345af574")
+}
+Enterprise Indexes> db.sessions2.createIndex({place : 1,name : -1,location : 1});
+place_1_name_-1_location_1
+Enterprise Indexes> db.sessions2.find({name : "Name4", place : "place4"},{_id : 0});
+[ { name: 'Name4', Location: 'location4', place: 'place4' } ]
+Enterprise Indexes> db.sessions2.explain("executionStats").find({name : "Name4", place : "place4"},{_id : 0});
+{
+  explainVersion: '1',
+  queryPlanner: {
+    namespace: 'Indexes.sessions2',
+    indexFilterSet: false,
+    parsedQuery: {
+      '$and': [ { name: { '$eq': 'Name4' } }, { place: { '$eq': 'place4' } } ]
+    },
+    maxIndexedOrSolutionsReached: false,
+    maxIndexedAndSolutionsReached: false,
+    maxScansToExplodeReached: false,
+    winningPlan: {
+      stage: 'PROJECTION_DEFAULT',
+      transformBy: { _id: 0 },
+      inputStage: {
+        stage: 'FETCH',
+        inputStage: {
+          stage: 'IXSCAN',
+          keyPattern: { place: 1, name: -1, location: 1 },
+          indexName: 'place_1_name_-1_location_1',
+          isMultiKey: false,
+          multiKeyPaths: { place: [], name: [], location: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: {
+            place: [ '["place4", "place4"]' ],
+            name: [ '["Name4", "Name4"]' ],
+            location: [ '[MinKey, MaxKey]' ]
+          }
+        }
+      }
+    },
+    rejectedPlans: []
+  },
+  executionStats: {
+    executionSuccess: true,
+    nReturned: 1,
+    executionTimeMillis: 0,
+    totalKeysExamined: 1,
+    totalDocsExamined: 1,
+    executionStages: {
+      stage: 'PROJECTION_DEFAULT',
+      nReturned: 1,
+      executionTimeMillisEstimate: 0,
+      works: 2,
+      advanced: 1,
+      needTime: 0,
+      needYield: 0,
+      saveState: 0,
+      restoreState: 0,
+      isEOF: 1,
+      transformBy: { _id: 0 },
+      inputStage: {
+        stage: 'FETCH',
+        nReturned: 1,
+        executionTimeMillisEstimate: 0,
+        works: 2,
+        advanced: 1,
+        needTime: 0,
+        needYield: 0,
+        saveState: 0,
+        restoreState: 0,
+        isEOF: 1,
+        docsExamined: 1,
+        alreadyHasObj: 0,
+        inputStage: {
+          stage: 'IXSCAN',
+          nReturned: 1,
+          executionTimeMillisEstimate: 0,
+          works: 2,
+          advanced: 1,
+          needTime: 0,
+          needYield: 0,
+          saveState: 0,
+          restoreState: 0,
+          isEOF: 1,
+          keyPattern: { place: 1, name: -1, location: 1 },
+          indexName: 'place_1_name_-1_location_1',
+          isMultiKey: false,
+          multiKeyPaths: { place: [], name: [], location: [] },
+          isUnique: false,
+          isSparse: false,
+          isPartial: false,
+          indexVersion: 2,
+          direction: 'forward',
+          indexBounds: {
+            place: [ '["place4", "place4"]' ],
+            name: [ '["Name4", "Name4"]' ],
+            location: [ '[MinKey, MaxKey]' ]
+          },
+          keysExamined: 1,
+          seeks: 1,
+          dupsTested: 0,
+          dupsDropped: 0
+        }
+      }
+    }
+  },
+  command: {
+    find: 'sessions2',
+    filter: { name: 'Name4', place: 'place4' },
+    projection: { _id: 0 },
+    '$db': 'Indexes'
+  },
+  serverInfo: {
+    host: 'LAPTOP-6EHOUB3B',
+    port: 27017,
+    version: '5.0.5',
+    gitVersion: 'd65fd89df3fc039b5c55933c0f71d647a54510ae'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600
+  },
+  ok: 1
+}
+
+
+
+
+
+
+
+text Indexes :- 
+
+Enterprise Indexes> db.textIndexes.insertOne({name : "Google",description : "Started around 15 yrs ago , stays in US , a software company"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3800111f84af4345af575")
+}
+Enterprise Indexes> db.textIndexes.insertOne({name : "Facebook",description : "Started around 25 yrs ago , stays in UK , a mechanical company"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3801711f84af4345af576")
+}
+Enterprise Indexes> db.textIndexes.insertOne({name : "Orkut",description : "Started around 55 yrs ago , stays in India , a electrical company"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3802b11f84af4345af577")
+}
+Enterprise Indexes> db.textIndexes.insertOne({name : "Yahoo",description : "Started around 01 yrs ago , stays in Pakistan , a electronics company"});
+{
+  acknowledged: true,
+  insertedId: ObjectId("61f3804511f84af4345af578")
+}
+Enterprise Indexes> db.textIndexes.createIndex({description : "text"});
+description_text
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "India"}});
+[
+  {
+    _id: ObjectId("61f3802b11f84af4345af577"),
+    name: 'Orkut',
+    description: 'Started around 55 yrs ago , stays in India , a electrical company'
+  }
+]
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "started"}});
+[
+  {
+    _id: ObjectId("61f3804511f84af4345af578"),
+    name: 'Yahoo',
+    description: 'Started around 01 yrs ago , stays in Pakistan , a electronics company'
+  },
+  {
+    _id: ObjectId("61f3802b11f84af4345af577"),
+    name: 'Orkut',
+    description: 'Started around 55 yrs ago , stays in India , a electrical company'
+  },
+  {
+    _id: ObjectId("61f3801711f84af4345af576"),
+    name: 'Facebook',
+    description: 'Started around 25 yrs ago , stays in UK , a mechanical company'
+  },
+  {
+    _id: ObjectId("61f3800111f84af4345af575"),
+    name: 'Google',
+    description: 'Started around 15 yrs ago , stays in US , a software company'
+  }
+]
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "Pakistan mechanical"}});
+[
+  {
+    _id: ObjectId("61f3801711f84af4345af576"),
+    name: 'Facebook',
+    description: 'Started around 25 yrs ago , stays in UK , a mechanical company'
+  },
+  {
+    _id: ObjectId("61f3804511f84af4345af578"),
+    name: 'Yahoo',
+    description: 'Started around 01 yrs ago , stays in Pakistan , a electronics company'
+  }
+]
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "\" Pakistan mechanical \""}});// this is used to combine 2 words and use as a single word for searching 
+
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "\"mechanical company\""}});
+[
+  {
+    _id: ObjectId("61f3801711f84af4345af576"),
+    name: 'Facebook',
+    description: 'Started around 25 yrs ago , stays in UK , a mechanical company'
+  }
+]
+
+
+Working on scores and sorting data on scores :- 
+
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "\"mechanical company\""}},{score : {$meta : "textScore"}});
+[
+  {
+    _id: ObjectId("61f3801711f84af4345af576"),
+    name: 'Facebook',
+    description: 'Started around 25 yrs ago , stays in UK , a mechanical company',
+    score: 1.1111111111111112
+  }
+]
+
+
+
+Enterprise Indexes> db.textIndexes.find({$text : {$search : "\"company\""}},{score : {$meta : "textScore"}}).sort({score : {$meta : "textScore"}});
+[
+  {
+    _id: ObjectId("61f3800111f84af4345af575"),
+    name: 'Google',
+    description: 'Started around 15 yrs ago , stays in US , a software company',
+    score: 0.5555555555555556
+  },
+  {
+    _id: ObjectId("61f3802b11f84af4345af577"),
+    name: 'Orkut',
+    description: 'Started around 55 yrs ago , stays in India , a electrical company',
+    score: 0.5555555555555556
+  },
+  {
+    _id: ObjectId("61f3804511f84af4345af578"),
+    name: 'Yahoo',
+    description: 'Started around 01 yrs ago , stays in Pakistan , a electronics company',
+    score: 0.5555555555555556
+  },
+  {
+    _id: ObjectId("61f3801711f84af4345af576"),
+    name: 'Facebook',
+    description: 'Started around 25 yrs ago , stays in UK , a mechanical company',
+    score: 0.5555555555555556
+  }
+]
+
+
+
+
+
+
